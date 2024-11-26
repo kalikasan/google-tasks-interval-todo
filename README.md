@@ -18,3 +18,10 @@ Given that the task name is all you need to parametrize each task behaviour, you
 - Everything is now set up, congrats! 
 
 ## Using the script
+
+As mentioned above, all you need to do is to write a pattern `~[number][unit_of_time]` somewhere in the task title. A number should be an integer, supported units of time are "d" (for day), "w" (for week) and "m" (for month). By default the script runs on all the Task Lists of the account that uses the script. If you only want to run it on a single Task List or on a selection of those, you can modify the script to do so: uncomment the first `Logger.log()` call and execute the script from Google Apps Script interface. All your current Task Lists and their IDs will be printed below the code. Put the ID(s) you want to use in the `listIds` array.
+
+## Tweaking things
+
+- A week corresponds to 7 days, a month corresponds to 30 days. You can change that in the code if you want. For example, you might want to set a week to 6 days or a month to 28 days. It's ok, no calendar police will hunt you, the whole script is about fuzzy deadlines anyway.
+- The default notation (e.g. `~2w`) may not work for you if you use another alphabet or do not have an easy access to `~` character on your device. You can change those in `computeDelayFromTitle()` function. You can replace the pattern `/~(\d+)([dwm])/` by something like `/#(\d+)([днм])/` (cyrillic with # character) or `/>(\d+)([ηεμ])/` (greek with > character). 
